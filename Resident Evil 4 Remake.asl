@@ -276,7 +276,7 @@ isLoading
 
 reset
 {
-	return current.Cutscene == 10003 && old.Cutscene == -1;
+	return current.Cutscene == 10157 && old.Cutscene == -1;
 }
 
 exit
