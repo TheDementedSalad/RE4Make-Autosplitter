@@ -66,7 +66,7 @@ startup
 	settings.Add("119257600", false, "Church Insignia");
 	settings.Add("Merch", false, "Reach Merchant Dock");
 	settings.Add("10022", false, "Gigante Start");
-	settings.Add("20213", false, "Gigante End");
+	settings.Add("20123", false, "Gigante End");
 	settings.Add("Church", false, "Enter Church");
 	settings.Add("22200", false, "Finish Chapter 4");
 	settings.CurrentDefaultParent = null;
