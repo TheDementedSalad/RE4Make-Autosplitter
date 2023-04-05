@@ -30,7 +30,7 @@ startup
 	settings.Add("10155", false, "Contact Hunnigan");
 	settings.Add("40200", false, "Reach Village");
 	settings.Add("10011", false, "La Campana");
-	settings.Add("119325200", false, "Wooden Cog");
+	settings.Add("119235200", false, "Wooden Cog");
 	settings.Add("43400", false, "Exit Tunnel");
 	settings.Add("21200", false, "Finish Chapter 1");
 	settings.CurrentDefaultParent = null;
