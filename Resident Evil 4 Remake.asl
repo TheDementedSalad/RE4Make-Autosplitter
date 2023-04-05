@@ -11,9 +11,10 @@ state("re4")
    long PauseSpendingTime	: 0xD234048, 0x18, 0x50;
    long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;
 	
-   int Map			: 0xD2368B0, 0x38, 0x14;			//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
-   int Chapter			: 0xD21B2C8, 0x154;				//21100 Chapter 1, 21200 Chapter 2
-   int Cutscene			: 0xD21B2C8, 0x17C;			
+   int Map					: 0xD2368B0, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
+   int Chapter				: 0xD21B2C8, 0x154;				//21100 Chapter 1, 21200 Chapter 2
+   int Cutscene				: 0xD21B2C8, 0x17C;	
+   int ItemID				: 0xD22B258, 0xE0, 0xE8;
 }
 
 startup
@@ -243,6 +244,11 @@ split
 	
 	if(settings["" + current.Map] && !vars.completedSplits.Contains(current.Map)){
 		vars.completedSplits.Add(current.Map);
+		return true;
+	}
+	
+	if(settings["" + current.ItemID] && !vars.completedSplits.Contains(current.ItemID)){
+		vars.completedSplits.Add(current.ItemID);
 		return true;
 	}
 	
