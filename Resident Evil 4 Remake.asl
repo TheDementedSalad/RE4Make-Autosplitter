@@ -139,7 +139,7 @@ startup
 	settings.Add("Ch11", false, "Chapter 11");
 	settings.CurrentDefaultParent = "Ch11";
 	settings.Add("55103", false, "Enter Dynamite Area");
-	settings.Add("119236800", false, "Daynamite");
+	settings.Add("119236800", false, "Dynamite");
 	settings.Add("10046", false, "Start Double Gigante");
 	settings.Add("55201", false, "Enter Minecart Area");
 	settings.Add("55202", false, "Finish 1st Minecart Section");
