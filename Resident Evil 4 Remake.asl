@@ -17,11 +17,14 @@ state("re4")
    int ItemID				: 0xD22B258, 0xE0, 0xE8;
 }
 
-startup
+init
 {
 	vars.StartTime = 0;
 	vars.completedSplits = new List<int>();
-	
+}
+
+startup
+{
 	settings.Add("Ch1", false, "Chapter 1");
 	settings.CurrentDefaultParent = "Ch1";
 	settings.Add("40510", false, "Reach Hunter's Cabin");
@@ -211,7 +214,6 @@ update
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
 		vars.completedSplits.Clear();
-		vars.StartTime = 0;
 	}
 	
 	if(current.Cutscene == 10003 && old.Cutscene == -1){
@@ -277,6 +279,7 @@ isLoading
 reset
 {
 	return current.Cutscene == 10157 && old.Cutscene == -1;
+	vars.StartTime = 0;
 }
 
 exit
