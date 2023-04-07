@@ -1,26 +1,49 @@
-//Resident Evil 4 Remake Autosplitter V1.0.1 (05/04/2023)
+//Resident Evil 4 Remake Autosplitter V1.0.2 (07/04/2023)
 //Supports IGT and Game Splits
 //Script & Pointers by TheDementedSalad
 //Special Thanks to:
 //Yuushi & AvuKamu for going through the game and collecting data for splits
 
-state("re4")
+state("re4","Release")
 {
    long GameElapsedTime		: 0xD234048, 0x18, 0x38;
    long DemoSpendingTime	: 0xD234048, 0x18, 0x40;
    long PauseSpendingTime	: 0xD234048, 0x18, 0x50;
    long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;
+   
+   int Cutscene			: 0xD21B2C8, 0x17C;	
+   int Chapter			: 0xD2368B0, 0x30;			//21100 Chapter 1, 21200 Chapter 2
+   int Map			: 0xD2368B0, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
+   int ItemID			: 0xD22B258, 0xE0, 0xE8;
+}
+
+state("re4","7/4/23")
+{
+   long GameElapsedTime		: 0xD22D7D0, 0x18, 0x38;
+   long DemoSpendingTime	: 0xD22D7D0, 0x18, 0x40;
+   long PauseSpendingTime	: 0xD22D7D0, 0x18, 0x50;
+   long ChapterTimeStart	: 0xD217780, 0x20, 0x10, 0x18;
 	
-   int Map					: 0xD2368B0, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
-   int Chapter				: 0xD21B2C8, 0x154;				//21100 Chapter 1, 21200 Chapter 2
-   int Cutscene				: 0xD21B2C8, 0x17C;	
-   int ItemID				: 0xD22B258, 0xE0, 0xE8;
+   int Cutscene			: 0xD222610, 0x17C;	
+   int Chapter			: 0xD22B018, 0x30;			//21100 Chapter 1, 21200 Chapter 2
+   int Map			: 0xD22B018, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes
+   int ItemID			: 0xD22B240, 0xE0, 0xE8;
 }
 
 init
 {
 	vars.StartTime = 0;
 	vars.completedSplits = new List<int>();
+	
+	switch (modules.First().ModuleMemorySize)
+	{
+		case (548831232):
+			version = "7/4/23";
+			break;
+		default:
+			version = "Release";
+			break;
+	}
 }
 
 startup
@@ -211,6 +234,8 @@ startup
 
 update
 {
+	//print(modules.First().ModuleMemorySize.ToString());
+	
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
 		vars.completedSplits.Clear();
