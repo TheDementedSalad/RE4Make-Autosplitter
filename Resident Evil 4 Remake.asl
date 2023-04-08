@@ -11,10 +11,10 @@ state("re4","Release")
    long PauseSpendingTime	: 0xD234048, 0x18, 0x50;
    long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;
    
-   int Cutscene			: 0xD21B2C8, 0x17C;	
-   int Chapter			: 0xD2368B0, 0x30;			//21100 Chapter 1, 21200 Chapter 2
-   int Map			: 0xD2368B0, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
-   int ItemID			: 0xD22B258, 0xE0, 0xE8;
+   int Cutscene				: 0xD21B2C8, 0x17C;	
+   int Chapter				: 0xD2368B0, 0x30;				//21100 Chapter 1, 21200 Chapter 2
+   int Map					: 0xD2368B0, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
+   int ItemID				: 0xD22B258, 0xE0, 0xE8;
 }
 
 state("re4","7/4/23")
@@ -24,10 +24,10 @@ state("re4","7/4/23")
    long PauseSpendingTime	: 0xD22D7D0, 0x18, 0x50;
    long ChapterTimeStart	: 0xD217780, 0x20, 0x10, 0x18;
 	
-   int Cutscene			: 0xD222610, 0x17C;	
-   int Chapter			: 0xD22B018, 0x30;			//21100 Chapter 1, 21200 Chapter 2
-   int Map			: 0xD22B018, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes
-   int ItemID			: 0xD22B240, 0xE0, 0xE8;
+   int Cutscene				: 0xD222610, 0x17C;	
+   int Chapter				: 0xD22B018, 0x30;				//21100 Chapter 1, 21200 Chapter 2
+   int Map					: 0xD22B018, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes
+   int ItemID				: 0xD22B240, 0xE0, 0xE8;
 }
 
 init
@@ -134,7 +134,6 @@ startup
 	settings.CurrentDefaultParent = "Ch8";
 	settings.Add("119209600", true, "Crimson Lantern");
 	settings.Add("10036", true, "Meet Ada");
-	settings.Add("10210", true, "Meet First Arana Plaga");
 	settings.Add("20113", true, "Start Gigante Escape");
 	settings.Add("10138", true, "Gigante Under the Bridge");
 	settings.Add("23300", true, "Finish Chapter 8");
@@ -234,14 +233,14 @@ startup
 
 update
 {
-	//print(modules.First().ModuleMemorySize.ToString());
+	print(modules.First().ModuleMemorySize.ToString());
 	
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
 		vars.completedSplits.Clear();
 	}
 	
-	if(current.Cutscene == 10003 && old.Cutscene == -1){
+	if(current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500){
 		vars.StartTime = current.ChapterTimeStart;
 		return true;
 	}
@@ -254,7 +253,7 @@ gameTime
 
 start
 {
-	return current.Cutscene == 10003 && old.Cutscene == -1;
+	return current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500;
 }
 
 split
