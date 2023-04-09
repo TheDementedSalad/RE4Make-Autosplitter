@@ -49,6 +49,23 @@ init
 
 startup
 {
+	// Asks user to change to game time if LiveSplit is currently set to Real Time.
+		if (timer.CurrentTimingMethod == TimingMethod.RealTime)
+    {        
+        var timingMessage = MessageBox.Show (
+            "This game uses In Game Time as the main timing method.\n"+
+            "LiveSplit is currently set to show Real Time (RTA).\n"+
+            "Would you like to set the timing method to Game Time?",
+            "LiveSplit | Resident Evil 4 (2023)",
+            MessageBoxButtons.YesNo,MessageBoxIcon.Question
+        );
+
+        if (timingMessage == DialogResult.Yes)
+        {
+            timer.CurrentTimingMethod = TimingMethod.GameTime;
+        }
+    }
+	
 	settings.Add("Ch1", false, "Chapter 1");
 	settings.CurrentDefaultParent = "Ch1";
 	settings.Add("40510", false, "Reach Hunter's Cabin");
