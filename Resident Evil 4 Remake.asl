@@ -24,10 +24,14 @@ state("re4","7/4/23")
    long PauseSpendingTime	: 0xD22D7D0, 0x18, 0x50;
    long ChapterTimeStart	: 0xD217780, 0x20, 0x10, 0x18;
 	
-   int Cutscene				: 0xD222610, 0x17C;	
-   int Chapter				: 0xD22B018, 0x30;				//21100 Chapter 1, 21200 Chapter 2
-   int Map					: 0xD22B018, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes
-   int ItemID				: 0xD22B240, 0xE0, 0xE8;
+   int Cutscene			: 0xD222610, 0x17C;	
+   int Chapter			: 0xD22B018, 0x30;				//21100 Chapter 1, 21200 Chapter 2
+   int Map			: 0xD22B018, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes
+   int ItemID			: 0xD22B240, 0xE0, 0xE8;
+   
+   byte DARank			: 0xD22B1A0, 0x10;
+   float ActionPoint 		: 0xD22B1A0, 0x14;
+   float ItemPoint		: 0xD22B1A0, 0x18;
 }
 
 init
