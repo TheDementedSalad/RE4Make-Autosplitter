@@ -1,4 +1,4 @@
-//Resident Evil 4 Remake Autosplitter V1.0.2 (07/04/2023)
+//Resident Evil 4 Remake Autosplitter V1.0.3 (24/04/2023)
 //Supports IGT and Game Splits
 //Script & Pointers by TheDementedSalad
 //Special Thanks to:
@@ -6,32 +6,49 @@
 
 state("re4","Release")
 {
-   long GameElapsedTime		: 0xD234048, 0x18, 0x38;
-   long DemoSpendingTime	: 0xD234048, 0x18, 0x40;
-   long PauseSpendingTime	: 0xD234048, 0x18, 0x50;
-   long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;
+   long GameElapsedTime		: 0xD234048, 0x18, 0x38;		//share.GameClock
+   long DemoSpendingTime	: 0xD234048, 0x18, 0x40;		//""
+   long PauseSpendingTime	: 0xD234048, 0x18, 0x50;		//""
+   long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;  //chainsaw.GameStatsManager > OngoingStats
    
-   int Cutscene				: 0xD21B2C8, 0x17C;	
-   int Chapter				: 0xD2368B0, 0x30;				//21100 Chapter 1, 21200 Chapter 2
-   int Map					: 0xD2368B0, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes (CampaignManager in REFramework)
+   int Cutscene				: 0xD21B2C8, 0x17C;				//10157 sacrifice cutscene, 10003 Leon in car, -1 no cutscene
+   int Chapter				: 0xD2368B0, 0x30;				//chainsaw.CampaignManager > CurrentChapter
+   int Map					: 0xD2368B0, 0x38, 0x14;		//"" 					   > Stage
    int ItemID				: 0xD22B258, 0xE0, 0xE8;
 }
 
 state("re4","7/4/23")
 {
-   long GameElapsedTime		: 0xD22D7D0, 0x18, 0x38;
+   long GameElapsedTime		: 0xD22D7D0, 0x18, 0x38;		
    long DemoSpendingTime	: 0xD22D7D0, 0x18, 0x40;
    long PauseSpendingTime	: 0xD22D7D0, 0x18, 0x50;
    long ChapterTimeStart	: 0xD217780, 0x20, 0x10, 0x18;
 	
-   int Cutscene			: 0xD222610, 0x17C;	
-   int Chapter			: 0xD22B018, 0x30;				//21100 Chapter 1, 21200 Chapter 2
-   int Map			: 0xD22B018, 0x38, 0x14;		//50500 next to the beginning car, 50501 after bushes
-   int ItemID			: 0xD22B240, 0xE0, 0xE8;
+   int Cutscene				: 0xD222610, 0x17C;	
+   int Chapter				: 0xD22B018, 0x30;
+   int Map					: 0xD22B018, 0x38, 0x14;
+   int ItemID				: 0xD22B240, 0xE0, 0xE8;		
    
-   byte DARank			: 0xD22B1A0, 0x10;
+   byte DARank				: 0xD22B1A0, 0x10;
    float ActionPoint 		: 0xD22B1A0, 0x14;
-   float ItemPoint		: 0xD22B1A0, 0x18;
+   float ItemPoint			: 0xD22B1A0, 0x18;
+}
+
+state("re4","24/4/23")
+{
+   long GameElapsedTime		: 0xD257048, 0x18, 0x38;
+   long DemoSpendingTime	: 0xD257048, 0x18, 0x40;
+   long PauseSpendingTime	: 0xD257048, 0x18, 0x50;
+   long ChapterTimeStart	: 0xD2470C8, 0x20, 0x10, 0x18;
+	
+   int Cutscene				: 0xD257428, 0x17C;	
+   int Chapter				: 0xD259508, 0x30;
+   int Map					: 0xD259508, 0x38, 0x14;
+   int ItemID				: 0xD260470, 0xE0, 0xF0;
+   
+   byte DARank				: 0xD2603D0, 0x10;
+   float ActionPoint 		: 0xD2603D0, 0x14;
+   float ItemPoint			: 0xD2603D0, 0x18;
 }
 
 init
@@ -44,6 +61,9 @@ init
 		case (548831232):
 		case (538660864):
 			version = "7/4/23";
+			break;
+		case (553566208):
+			version = "24/4/23";
 			break;
 		default:
 			version = "Release";
