@@ -11,7 +11,7 @@ state("re4","Release")
    long PauseSpendingTime	: 0xD234048, 0x18, 0x50;		//""
    long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;  //chainsaw.GameStatsManager > OngoingStats
    
-   int Cutscene				: 0xD21B2C8, 0x17C;				//10157 sacrifice cutscene, 10003 Leon in car, -1 no cutscene
+   int Cutscene				: 0xD21B2C8, 0x17C;				//10157 sacrifice cutscene, 10003 Leon in car, -1 no cutscene - HighwayGuiManager > _CsItemWindowGuiControlBehavior > _GetItemID
    int Chapter				: 0xD2368B0, 0x30;				//chainsaw.CampaignManager > CurrentChapter
    int Map					: 0xD2368B0, 0x38, 0x14;		//"" 					   > Stage
    int ItemID				: 0xD22B258, 0xE0, 0xE8;
@@ -51,6 +51,19 @@ state("re4","24/4/23")
    float ItemPoint			: 0xD2603D0, 0x18;
 }
 
+state("re4","21/9/23")
+{
+   long GameElapsedTime		: 0xDC078D8, 0x18, 0x38;
+   long DemoSpendingTime	: 0xDC078D8, 0x18, 0x40;
+   long PauseSpendingTime	: 0xDC078D8, 0x18, 0x50;
+   long ChapterTimeStart	: 0xDBBDA10, 0x20, 0x10, 0x18;
+	
+   int Cutscene				: 0xDBC2C80, 0x18C;	
+   int Chapter				: 0xDBC2848, 0x30;
+   int Map					: 0xDBC2848, 0x38, 0x14;
+   int ItemID				: 0xDBC2AA0, 0xE0, 0xF0;
+}
+
 init
 {
 	vars.StartTime = 0;
@@ -64,6 +77,9 @@ init
 			break;
 		case (553566208):
 			version = "24/4/23";
+			break;
+		case (541417472):
+			version = "21/9/23";
 			break;
 		default:
 			version = "Release";
@@ -90,6 +106,8 @@ startup
         }
     }
 	
+	settings.Add("Main", false, "Main Game");
+	settings.CurrentDefaultParent = "Main";
 	settings.Add("Ch1", false, "Chapter 1");
 	settings.CurrentDefaultParent = "Ch1";
 	settings.Add("40510", false, "Reach Hunter's Cabin");
@@ -101,7 +119,7 @@ startup
 	settings.Add("119235200", false, "Wooden Cog");
 	settings.Add("43400", false, "Exit Tunnel");
 	settings.Add("21200", false, "Finish Chapter 1");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch2", false, "Chapter 2");
 	settings.CurrentDefaultParent = "Ch2";
@@ -111,7 +129,7 @@ startup
 	settings.Add("44201", false, "Open Hexagonal Emblem Door");
 	settings.Add("119217600", false, "Crystal Marble");
 	settings.Add("21300", false, "Finish Chapter 2");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch3", false, "Chapter 3");
 	settings.CurrentDefaultParent = "Ch3";
@@ -121,7 +139,7 @@ startup
 	settings.Add("119273600", false, "Boat Fuel");
 	settings.Add("10018", false, "Del Lago Start");
 	settings.Add("22100", false, "Finish Chapter 3");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch4", false, "Chapter 4");
 	settings.CurrentDefaultParent = "Ch4";
@@ -137,7 +155,7 @@ startup
 	settings.Add("20123", false, "Gigante End");
 	settings.Add("Church", false, "Enter Church");
 	settings.Add("22200", false, "Finish Chapter 4");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch5", false, "Chapter 5");
 	settings.CurrentDefaultParent = "Ch5";
@@ -146,7 +164,7 @@ startup
 	settings.Add("10026", false, "Start Cabin");
 	settings.Add("20132", false, "Cabin Part 2");
 	settings.Add("22300", false, "Finish Chapter 5");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch6", false, "Chapter 6");
 	settings.CurrentDefaultParent = "Ch6";
@@ -159,7 +177,7 @@ startup
 	settings.Add("20111", false, "Mendez Phase 2 Start");
 	settings.Add("20112", false, "Mendez Finish");
 	settings.Add("23100", false, "Finish Chapter 6");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch7", false, "Chapter 7");
 	settings.CurrentDefaultParent = "Ch7";
@@ -170,7 +188,7 @@ startup
 	settings.Add("50601", false, "Enter Water Hall");
 	settings.Add("119206400", false, "Halo Wheel");
 	settings.Add("23200", false, "Finish Chapter 7");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch8", false, "Chapter 8");
 	settings.CurrentDefaultParent = "Ch8";
@@ -179,7 +197,7 @@ startup
 	settings.Add("20113", true, "Start Gigante Escape");
 	settings.Add("10138", true, "Gigante Under the Bridge");
 	settings.Add("23300", true, "Finish Chapter 8");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch9", false, "Chapter 9");
 	settings.CurrentDefaultParent = "Ch9";
@@ -192,7 +210,7 @@ startup
 	settings.Add("53302", false, "Enter the Crypts");
 	settings.Add("119220800", false, "Salazar Family Insignia");
 	settings.Add("24100", false, "Finish Chapter 9");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch10", false, "Chapter 10");
 	settings.CurrentDefaultParent = "Ch10";
@@ -202,7 +220,7 @@ startup
 	settings.Add("54401", false, "Tunnels Before Verdugo");
 	settings.Add("10042", false, "Verdugo Spawns");
 	settings.Add("24200", false, "Finish Chapter 10");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch11", false, "Chapter 11");
 	settings.CurrentDefaultParent = "Ch11";
@@ -215,7 +233,7 @@ startup
 	settings.Add("10047", false, "Reach Novi Hive");
 	settings.Add("10048", false, "Krauser Start");
 	settings.Add("24300", false, "Finish Chapter 11");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch12", false, "Chapter 12");
 	settings.CurrentDefaultParent = "Ch12";
@@ -225,7 +243,7 @@ startup
 	settings.Add("20115", false, "Salazar Finish");
 	settings.Add("56300", false, "Enter Docks");
 	settings.Add("25100", false, "Finish Chapter 12");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch13", false, "Chapter 13");
 	settings.CurrentDefaultParent = "Ch13";
@@ -238,7 +256,7 @@ startup
 	settings.Add("119219200", false, "Wrench");
 	settings.Add("119214400", false, "Level 3 Keycard");
 	settings.Add("25200", false, "Finish Chapter 13");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch14", false, "Chapter 14");
 	settings.CurrentDefaultParent = "Ch14";
@@ -251,7 +269,7 @@ startup
 	settings.Add("10062", false, "Start Krauser Fight");
 	settings.Add("10136", false, "Start Final Krauser Fight");
 	settings.Add("25300", false, "Finish Chapter 14");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch15", false, "Chapter 15");
 	settings.CurrentDefaultParent = "Ch15";
@@ -261,7 +279,7 @@ startup
 	settings.Add("67104", false, "Enter Turret Skip Gauntlet");
 	settings.Add("10067", false, "Pick Up Ashley");
 	settings.Add("25400", false, "Chapter 15");
-	settings.CurrentDefaultParent = null;
+	settings.CurrentDefaultParent = "Main";
 	
 	settings.Add("Ch16", false, "Chapter 16");
 	settings.CurrentDefaultParent = "Ch16";
@@ -270,7 +288,72 @@ startup
 	settings.Add("10158", false, "Saddler End");
 	settings.Add("10074", false, "Reach Boat");
 	settings.Add("10075", true, "Chapter 16 (Final Split)");
+	settings.CurrentDefaultParent = "Main";
 	settings.CurrentDefaultParent = null;
+	
+	settings.Add("Separ", false, "Separate Ways");
+	settings.CurrentDefaultParent = "Separ";
+	settings.Add("Ch1s", false, "Chapter 1");
+	settings.CurrentDefaultParent = "Ch1s";
+	settings.Add("50020", false, "Defeat Pesanta 1");
+	settings.Add("50040", false, "Finish Chapter 1");
+	settings.CurrentDefaultParent = "Separ";
+	
+	settings.Add("Ch2s", false, "Chapter 2");
+	settings.CurrentDefaultParent = "Ch2s";
+	settings.Add("50130", false, "Reach Windmill");
+	settings.Add("50140", false, "Reach Church");
+	settings.Add("50145", false, "Start Pesanta 2");
+	settings.Add("50210", false, "Finish Chapter 2");
+	settings.CurrentDefaultParent = "Separ";
+	
+	settings.Add("Ch3s", false, "Chapter 3");
+	settings.CurrentDefaultParent = "Ch3s";
+	settings.Add("44200", false, "Escaped Mendez");
+	settings.Add("50215", false, "Trigger Ambush");
+	settings.Add("50220", false, "Escape Ambush");
+	settings.Add("50240", false, "Start Gigante");
+	settings.Add("50250", false, "Finish Chapter 3");
+	settings.CurrentDefaultParent = "Separ";
+	
+	settings.Add("Ch4s", false, "Chapter 4");
+	settings.CurrentDefaultParent = "Ch4s";
+	settings.Add("50305", false, "Reached Luis' Lab");
+	settings.Add("50315", false, "Get Shopping List");
+	settings.Add("50320", false, "Ink Bottle");
+	settings.Add("118889600", false, "Gold Bottle");
+	settings.Add("118921600", false, "Blue Moonstone");
+	settings.Add("50340", false, "Finish Chapter 4");
+	settings.CurrentDefaultParent = "Separ";
+	
+	settings.Add("Ch5s", false, "Chapter 5");
+	settings.CurrentDefaultParent = "Ch5s";
+	settings.Add("55851", false, "Enter Nest");
+	settings.Add("55854", false, "Enter Garrador Room");
+	settings.Add("50350", false, "U3 Start");
+	settings.Add("50353", false, "Phase 2 Start");
+	settings.Add("50355", false, "U3 Dead");
+	settings.Add("50356", false, "RIP Luis");
+	settings.Add("50365", false, "Leon Domes Salazar");
+	settings.Add("50375", false, "Finish Chapter 5");
+	settings.CurrentDefaultParent = "Separ";
+	
+	settings.Add("Ch6s", false, "Chapter 6");
+	settings.CurrentDefaultParent = "Ch6s";
+	settings.Add("50420", false, "Leon Saves Ashley");
+	settings.Add("118923200", false, "Power Unit");
+	settings.Add("60850", false, "Reach Freight Lift");
+	settings.Add("50435", false, "Meet Martinico");
+	settings.Add("50460", false, "Finish Chapter 6");
+	settings.CurrentDefaultParent = "Separ";
+	
+	settings.Add("Ch7s", false, "Chapter 7");
+	settings.CurrentDefaultParent = "Ch7s";
+	settings.Add("50510", false, "Saddler Start");
+	settings.Add("50930", false, "Saddler End");
+	settings.Add("118904000", false, "Red Rocket Launcher");
+	settings.Add("50550", false, "Finish Chapter 7");
+	settings.CurrentDefaultParent = "Separ";
 }
 
 update
@@ -282,7 +365,7 @@ update
 		vars.completedSplits.Clear();
 	}
 	
-	if(current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500){
+	if(current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500 || current.Cutscene == 50000 && old.Cutscene == -1 && current.Map == 50502){
 		vars.StartTime = current.ChapterTimeStart;
 		return true;
 	}
@@ -295,7 +378,7 @@ gameTime
 
 start
 {
-	return current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500;
+	return current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500 || current.Cutscene == -1 && old.Cutscene == 50000 && current.Map == 50502;
 }
 
 split
@@ -344,7 +427,7 @@ isLoading
 
 reset
 {
-	return current.Cutscene == 10157 && old.Cutscene == -1;
+	return current.Cutscene == 10157 && old.Cutscene == -1 || current.Cutscene == 50000 && old.Cutscene == -1;
 	vars.StartTime = 0;
 }
 
