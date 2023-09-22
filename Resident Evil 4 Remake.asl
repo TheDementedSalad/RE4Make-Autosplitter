@@ -350,7 +350,7 @@ startup
 	settings.Add("Ch7s", false, "Chapter 7");
 	settings.CurrentDefaultParent = "Ch7s";
 	settings.Add("50510", false, "Saddler Start");
-	settings.Add("50930", false, "Saddler End");
+	settings.Add("50520", false, "Saddler End");
 	settings.Add("118904000", false, "Red Rocket Launcher");
 	settings.Add("50550", false, "Finish Chapter 7");
 	settings.CurrentDefaultParent = "Separ";
