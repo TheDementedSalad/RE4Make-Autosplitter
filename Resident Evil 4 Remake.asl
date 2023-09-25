@@ -62,6 +62,10 @@ state("re4","21/9/23")
    int Chapter				: 0xDBC2848, 0x30;
    int Map					: 0xDBC2848, 0x38, 0x14;
    int ItemID				: 0xDBC2AA0, 0xE0, 0xF0;
+
+   byte DARank              : 0xDBC2A00, 0x10;
+   float ActionPoint        : 0xDBC2A00, 0x14;
+   float ItemPoint          : 0xDBC2A00, 0x18;
 }
 
 init
