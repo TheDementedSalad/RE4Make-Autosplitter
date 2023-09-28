@@ -59,10 +59,11 @@ state("re4","21/9/23")
    long ChapterTimeStart	: 0xDBBDA10, 0x20, 0x10, 0x18;
 	
    int Cutscene				: 0xDBC2C80, 0x18C;	
+   int gameState			: 0xDBC2C80, 0x194;	
    int Chapter				: 0xDBC2848, 0x30;
    int Map					: 0xDBC2848, 0x38, 0x14;
    int ItemID				: 0xDBC2AA0, 0xE0, 0xF0;
-
+   
    byte DARank              : 0xDBC2A00, 0x10;
    float ActionPoint        : 0xDBC2A00, 0x14;
    float ItemPoint          : 0xDBC2A00, 0x18;
@@ -72,6 +73,7 @@ init
 {
 	vars.StartTime = 0;
 	vars.completedSplits = new List<int>();
+	vars.mendezKey = new List <int>();
 	
 	switch (modules.First().ModuleMemorySize)
 	{
@@ -295,6 +297,9 @@ startup
 	settings.CurrentDefaultParent = "Main";
 	settings.CurrentDefaultParent = null;
 	
+	
+	//Separate Ways
+	
 	settings.Add("Separ", false, "Separate Ways");
 	settings.CurrentDefaultParent = "Separ";
 	settings.Add("Ch1s", false, "Chapter 1");
@@ -313,6 +318,7 @@ startup
 	
 	settings.Add("Ch3s", false, "Chapter 3");
 	settings.CurrentDefaultParent = "Ch3s";
+	settings.Add("MenStart", false, "Mendez Jumpscare");
 	settings.Add("44200", false, "Escaped Mendez");
 	settings.Add("50215", false, "Trigger Ambush");
 	settings.Add("50220", false, "Escape Ambush");
@@ -325,7 +331,9 @@ startup
 	settings.Add("50305", false, "Reached Luis' Lab");
 	settings.Add("50315", false, "Get Shopping List");
 	settings.Add("50320", false, "Ink Bottle");
+	settings.Add("118907200", false, "Silver Bottle");
 	settings.Add("118889600", false, "Gold Bottle");
+	settings.Add("51101", false, "Enter Maze");
 	settings.Add("118921600", false, "Blue Moonstone");
 	settings.Add("50340", false, "Finish Chapter 4");
 	settings.CurrentDefaultParent = "Separ";
@@ -334,25 +342,30 @@ startup
 	settings.CurrentDefaultParent = "Ch5s";
 	settings.Add("55851", false, "Enter Nest");
 	settings.Add("55854", false, "Enter Garrador Room");
+	settings.Add("55855", false, "Elevator Before U3");
 	settings.Add("50350", false, "U3 Start");
 	settings.Add("50353", false, "Phase 2 Start");
 	settings.Add("50355", false, "U3 Dead");
 	settings.Add("50356", false, "RIP Luis");
-	settings.Add("50365", false, "Leon Domes Salazar");
+	settings.Add("50356", false, "Enter Path of Penitence");
+	settings.Add("50365", false, "Chase Krauser to Boat");
 	settings.Add("50375", false, "Finish Chapter 5");
 	settings.CurrentDefaultParent = "Separ";
 	
 	settings.Add("Ch6s", false, "Chapter 6");
 	settings.CurrentDefaultParent = "Ch6s";
+	settings.Add("Wreck", false, "Enter Wrecking Ball Area");
 	settings.Add("50420", false, "Leon Saves Ashley");
 	settings.Add("118923200", false, "Power Unit");
 	settings.Add("60850", false, "Reach Freight Lift");
+	settings.Add("60865", false, "Exit Freight Lift");
 	settings.Add("50435", false, "Meet Martinico");
 	settings.Add("50460", false, "Finish Chapter 6");
 	settings.CurrentDefaultParent = "Separ";
 	
 	settings.Add("Ch7s", false, "Chapter 7");
 	settings.CurrentDefaultParent = "Ch7s";
+	settings.Add("69900", false, "Exit Cave");
 	settings.Add("50510", false, "Saddler Start");
 	settings.Add("50520", false, "Saddler End");
 	settings.Add("118904000", false, "Red Rocket Launcher");
@@ -367,11 +380,16 @@ update
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
 		vars.completedSplits.Clear();
+		vars.mendezKey.Clear();
 	}
 	
 	if(current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500 || current.Cutscene == 50000 && old.Cutscene == -1 && current.Map == 50502){
 		vars.StartTime = current.ChapterTimeStart;
 		return true;
+	}
+	
+	if(current.ItemID == 118920000 && !vars.mendezKey.Contains(118920000)){
+		vars.mendezKey.Add(current.ItemID);
 	}
 }
 
@@ -418,6 +436,16 @@ split
 	}
 	
 	if((settings["Town"] && current.Map == 40213 || settings["Barn"] && current.Map == 43300) && current.Chapter == 22200 && !vars.completedSplits.Contains(current.Map)){
+		vars.completedSplits.Add(current.Map);
+		return true;
+	}
+	
+	if(settings["MenStart"] && current.gameState == 10 && vars.mendezKey.Contains(current.ItemID) && !vars.completedSplits.Contains(118920000)){
+		vars.completedSplits.Add(118920000);
+		return true;
+	}
+	
+	if(settings["Wreck"] && current.Map == 62200 && current.Chapter == 34100 && !vars.completedSplits.Contains(current.Map)){
 		vars.completedSplits.Add(current.Map);
 		return true;
 	}
