@@ -347,7 +347,6 @@ startup
 	settings.Add("50353", false, "Phase 2 Start");
 	settings.Add("50355", false, "U3 Dead");
 	settings.Add("50356", false, "RIP Luis");
-	settings.Add("50356", false, "Enter Path of Penitence");
 	settings.Add("50365", false, "Chase Krauser to Boat");
 	settings.Add("50375", false, "Finish Chapter 5");
 	settings.CurrentDefaultParent = "Separ";
