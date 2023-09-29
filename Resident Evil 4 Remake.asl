@@ -440,7 +440,7 @@ split
 		return true;
 	}
 	
-	if(settings["MenStart"] && current.gameState == 10 && vars.mendezKey.Contains(current.ItemID) && !vars.completedSplits.Contains(118920000)){
+	if(settings["MenStart"] && current.gameState == 10 && vars.mendezKey.Contains(118920000) && !vars.completedSplits.Contains(118920000)){
 		vars.completedSplits.Add(118920000);
 		return true;
 	}
