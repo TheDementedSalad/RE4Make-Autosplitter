@@ -1,5 +1,5 @@
-//Resident Evil 4 Remake Autosplitter V1.0.3 (24/04/2023)
-//Supports IGT and Game Splits
+//Resident Evil 4 Remake Autosplitter V1.0.5 (02/10/2023)
+//Supports IGT and Game Splits for both main game & Separate Ways
 //Script & Pointers by TheDementedSalad
 //Special Thanks to:
 //Yuushi & AvuKamu for going through the game and collecting data for splits
@@ -11,10 +11,10 @@ state("re4","Release")
    long PauseSpendingTime	: 0xD234048, 0x18, 0x50;		//""
    long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;  //chainsaw.GameStatsManager > OngoingStats
    
-   int Cutscene				: 0xD21B2C8, 0x17C;				//10157 sacrifice cutscene, 10003 Leon in car, -1 no cutscene - HighwayGuiManager > _CsItemWindowGuiControlBehavior > _GetItemID
+   int Cutscene				: 0xD21B2C8, 0x17C;				//10157 sacrifice cutscene, 10003 Leon in car, -1 no cutscene
    int Chapter				: 0xD2368B0, 0x30;				//chainsaw.CampaignManager > CurrentChapter
    int Map					: 0xD2368B0, 0x38, 0x14;		//"" 					   > Stage
-   int ItemID				: 0xD22B258, 0xE0, 0xE8;
+   int ItemID				: 0xD22B258, 0xE0, 0xE8;		//HighwayGuiManager > _CsItemWindowGuiControlBehavior > _GetItemID
 }
 
 state("re4","7/4/23")
@@ -69,6 +69,24 @@ state("re4","21/9/23")
    float ItemPoint          : 0xDBC2A00, 0x18;
 }
 
+state("re4","2/10/23")
+{
+   long GameElapsedTime		: 0xDBBB360, 0x20, 0x18;
+   long DemoSpendingTime	: 0xDBBB360, 0x20, 0x20;
+   long PauseSpendingTime	: 0xDBBB360, 0x20, 0x30;
+   long ChapterTimeStart	: 0xDBB39D0, 0x20, 0x10, 0x18;
+	
+   int Cutscene				: 0xDBB8C40, 0x18C;	
+   int gameState			: 0xDBB8C40, 0x194;	
+   int Chapter				: 0xDBB8808, 0x30;
+   int Map					: 0xDBB8808, 0x38, 0x14;
+   int ItemID				: 0xDBB8A60, 0xE0, 0xF0;
+   
+   byte DARank              : 0xDBB89C0, 0x10;
+   float ActionPoint        : 0xDBB89C0, 0x14;
+   float ItemPoint          : 0xDBB89C0, 0x18;
+}
+
 init
 {
 	vars.StartTime = 0;
@@ -86,6 +104,9 @@ init
 			break;
 		case (541417472):
 			version = "21/9/23";
+			break;
+		case (553279488):
+			version = "2/10/23";
 			break;
 		default:
 			version = "Release";
