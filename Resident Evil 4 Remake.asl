@@ -105,6 +105,7 @@ init
 		case (541417472):
 			version = "21/9/23";
 			break;
+		case (561971200):
 		case (553279488):
 			version = "2/10/23";
 			break;
