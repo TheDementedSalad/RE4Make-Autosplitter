@@ -1,0 +1,212 @@
+<Settings>
+    <Setting Id="Main"  Label="Main Game" State="false">
+		<Setting Id="Ch1" Label="Custom Door Splitter - Only Splits Once On Area">
+			<Setting Id="40510" Label="Reach Hunter's Cabin" State="false"/>
+			<Setting Id="10153" Label="Meet First Ganado" State="false"/>
+			<Setting Id="10154" Label="Dead Police Officer" State="false"/>
+			<Setting Id="10155" Label="Contact Hunnigan" State="false"/>
+			<Setting Id="40200" Label="Reach Village" State="false"/>
+			<Setting Id="10011" Label="La Campana" State="false"/>
+			<Setting Id="119235200" Label="Wooden Cog" State="false"/>
+			<Setting Id="43400" Label="Exit Tunnel" State="false"/>
+			<Setting Id="21200" Label="Finish Chapter 1" State="false"/>
+		</Setting>
+		<Setting Id="Ch2" Label="Chapter 2">
+			<Setting Id="10128" Label="Meet Merchant" State="false"/>
+			<Setting Id="44400" Label="Enter TNT Valley" State="false"/>
+			<Setting Id="119203200" Label="Hexagonal Emblem" State="false"/>
+			<Setting Id="44201" Label="Open Hexagonal Emblem Door" State="false"/>
+			<Setting Id="119217600" Label="Crystal Marble" State="false"/>
+			<Setting Id="21300" Label="Finish Chapter 2" State="false"/>
+		</Setting>
+		<Setting Id="Ch3" Label="Chapter 3">
+			<Setting Id="40212" Label="Enter Town Hall" State="false"/>
+			<Setting Id="10137" Label="Reach the Church" State="false"/>
+			<Setting Id="45400" Label="Reach Fishing Village" State="false"/>
+			<Setting Id="119273600" Label="Boat Fuel" State="false"/>
+			<Setting Id="10018" Label="Del Lago Start" State="false"/>
+			<Setting Id="22100" Label="Finish Chapter 3" State="false"/>
+		</Setting>
+		<Setting Id="Ch4" Label="Chapter 4">
+			<Setting Id="119256000" Label="Old Wayshrine Key" State="false"/>
+			<Setting Id="46200" Label="Reach Apostate's Head Island" State="false"/>
+			<Setting Id="119232000" Label="Apostate's Head" State="false"/>
+			<Setting Id="46110" Label="Reach Blasphemer's Head Island" State="false"/>
+			<Setting Id="119230400" Label="Blasphemer's Head" State="false"/>
+			<Setting Id="277083456" Label="Bawk's Golden Egg" State="false"/>
+			<Setting Id="119257600" Label="Church Insignia" State="false"/>
+			<Setting Id="Merch" Label="Reach Merchant Dock" State="false"/>
+			<Setting Id="10022" Label="Gigante Start" State="false"/>
+			<Setting Id="20123" Label="Gigante End" State="false"/>
+			<Setting Id="Church" Label="Enter Church" State="false"/>
+			<Setting Id="22200" Label="Finish Chapter 4" State="false"/>
+		</Setting>
+		<Setting Id="Ch5" Label="Chapter 5">
+			<Setting Id="Town" Label="Back to Town Hall" State="false"/>
+			<Setting Id="Barn" Label="Back to Barn House" State="false"/>
+			<Setting Id="10026" Label="Start Cabin" State="false"/>
+			<Setting Id="20132" Label="Cabin Part 2" State="false"/>
+			<Setting Id="22300" Label="Finish Chapter 5" State="false"/>
+		</Setting>
+		<Setting Id="Ch6" Label="Chapter 6">
+			<Setting Id="47102" Label="Enter Checkpoint Area" State="false"/>
+			<Setting Id="10125" Label="Bella Sisters Start" State="false"/>
+			<Setting Id="119246400" Label="Checkpoint Crank" State="false"/>
+			<Setting Id="10126" Label="Start Mendez Escape" State="false"/>
+			<Setting Id="10127" Label="Bridge Collapse" State="false"/>
+			<Setting Id="10028" Label="Mendez Start" State="false"/>
+			<Setting Id="20111" Label="Mendez Phase 2 Start" State="false"/>
+			<Setting Id="20112" Label="Mendez Finish" State="false"/>
+			<Setting Id="23100" Label="Finish Chapter 6" State="false"/>
+		</Setting>
+		<Setting Id="Ch7" Label="Chapter 7">
+			<Setting Id="50202" Label="Pass First Mandibula Plaga" State="false"/>
+			<Setting Id="10104" Label="Catapult Cutscene" State="false"/>
+			<Setting Id="50400" Label="Enter Castle" State="false"/>
+			<Setting Id="10114" Label="Meet Garrador" State="false"/>
+			<Setting Id="50601" Label="Enter Water Hall" State="false"/>
+			<Setting Id="119206400" Label="Halo Wheel" State="false"/>
+			<Setting Id="23200" Label="Finish Chapter 7" State="false"/>
+		</Setting>
+		<Setting Id="Ch8" Label="Chapter 8">
+			<Setting Id="119209600" Label="Crimson Lantern" State="false"/>
+			<Setting Id="10036" Label="Meet Ada" State="false"/>
+			<Setting Id="20113" Label="Start Gigante Escape" State="false"/>
+			<Setting Id="10138" Label="Gigante Under the Bridge" State="false"/>
+			<Setting Id="23300" Label="Finish Chapter 8" State="false"/>
+		</Setting>
+		<Setting Id="Ch9" Label="Chapter 9">
+			<Setting Id="52100" Label="Finish Maze" State="false"/>
+			<Setting Id="119222400" Label="Lion Head" State="false"/>
+			<Setting Id="119224000" Label="Goat Head" State="false"/>
+			<Setting Id="119225600" Label="Serpent Head" State="false"/>
+			<Setting Id="53100" Label="Ashley Start" State="false"/>
+			<Setting Id="119275200" Label="Bunch of Keys" State="false"/>
+			<Setting Id="53302" Label="Enter the Crypts" State="false"/>
+			<Setting Id="119220800" Label="Salazar Family Insignia" State="false"/>
+			<Setting Id="24100" Label="Finish Chapter 9" State="false"/>
+		</Setting>
+		<Setting Id="Ch10" Label="Chapter 10">
+			<Setting Id="54200" Label="Enter Novi Hall" State="false"/>
+			<Setting Id="54300" Label="Enter Double Garrador Hall" State="false"/>
+			<Setting Id="54400" Label="Sewers Start" State="false"/>
+			<Setting Id="54401" Label="Tunnels Before Verdugo" State="false"/>
+			<Setting Id="10042" Label="Verdugo Spawns" State="false"/>
+			<Setting Id="24200" Label="Finish Chapter 10" State="false"/>
+		</Setting>
+		<Setting Id="Ch11" Label="Chapter 11">
+			<Setting Id="55103" Label="Enter Dynamite Area" State="false"/>
+			<Setting Id="119236800" Label="Dynamite" State="false"/>
+			<Setting Id="10046" Label="Start Double Gigante" State="false"/>
+			<Setting Id="55201" Label="Enter Minecart Area" State="false"/>
+			<Setting Id="55202" Label="Finish 1st Minecart Section" State="false"/>
+			<Setting Id="55418" Label="Begin 2nd Minecart Section" State="false"/>
+			<Setting Id="10047" Label="Reach Novi Hive" State="false"/>
+			<Setting Id="10048" Label="Krauser Start" State="false"/>
+			<Setting Id="24300" Label="Finish Chapter 11" State="false"/>
+		</Setting>
+		<Setting Id="Ch12" Label="Chapter 12">
+			<Setting Id="10147" Label="Begin Clocktower Climb" State="false"/>
+			<Setting Id="56104" Label="Finish Clocktower Climb" State="false"/>
+			<Setting Id="10051" Label="Salazar Start" State="false"/>
+			<Setting Id="20115" Label="Salazar Finish" State="false"/>
+			<Setting Id="56300" Label="Enter Docks" State="false"/>
+			<Setting Id="25100" Label="Finish Chapter 12" State="false"/>
+		</Setting>
+		<Setting Id="Ch13" Label="Chapter 13">
+			<Setting Id="60103" Label="Turret Skip Double Door" State="false"/>
+			<Setting Id="61100" Label="Enter Facility" State="false"/>
+			<Setting Id="10056" Label="Find Ashley" State="false"/>
+			<Setting Id="61301" Label="Enter Regenerator Labs" State="false"/>
+			<Setting Id="119211200" Label="Level 1 Keycard" State="false"/>
+			<Setting Id="119212800" Label="Level 2 Keycard" State="false"/>
+			<Setting Id="119219200" Label="Wrench" State="false"/>
+			<Setting Id="119214400" Label="Level 3 Keycard" State="false"/>
+			<Setting Id="25200" Label="Finish Chapter 13" State="false"/>
+		</Setting>
+		<Setting Id="Ch14" Label="Chapter 14">
+			<Setting Id="62100" Label="Enter Cargo Depot" State="false"/>
+			<Setting Id="63100" Label="Enter Facility 2" State="false"/>
+			<Setting Id="63108" Label="Enter Sewer Drainage" State="false"/>
+			<Setting Id="62200" Label="Enter Wrecking Ball Area" State="false"/>
+			<Setting Id="62201" Label="Area After Wrecking Ball" State="false"/>
+			<Setting Id="10061" Label="Reach Amber" State="false"/>
+			<Setting Id="10062" Label="Start Krauser Fight" State="false"/>
+			<Setting Id="10136" Label="Start Final Krauser Fight" State="false"/>
+			<Setting Id="25300" Label="Finish Chapter 14" State="false"/>
+		</Setting>
+		<Setting Id="Ch15" Label="Chapter 15">
+			<Setting Id="20130" Label="Mike Blows Up Debris" State="false"/>
+			<Setting Id="20128" Label="Mike Blows Up Double Door" State="false"/>
+			<Setting Id="10066" Label="RIP Mike" State="false"/>
+			<Setting Id="67104" Label="Enter Turret Skip Gauntlet" State="false"/>
+			<Setting Id="10067" Label="Pick Up Ashley" State="false"/>
+			<Setting Id="25400" Label="Finish Chapter 15" State="false"/>
+		</Setting>
+		<Setting Id="Ch16" Label="Chapter 16">
+			<Setting Id="10071" Label="Saddler Start" State="false"/>
+			<Setting Id="20119" Label="Saddler Phase 2 Start" State="false"/>
+			<Setting Id="10158" Label="Saddler End" State="false"/>
+			<Setting Id="10074" Label="Reach Boat" State="false"/>
+			<Setting Id="10075" Label="Finish Chapter 16 (Final Split)" State="false"/>
+		</Setting>
+	</Setting>
+	<Setting Id="Separ"  Label="Separate Ways" State="false">
+		<Setting Id="Ch1s" Label="Chapter 1">
+			<Setting Id="50020" Label="Defeat Pesanta 1" State="false"/>
+			<Setting Id="50040" Label="Finish Chapter 1" State="false"/>
+		</Setting>
+		<Setting Id="Ch2s" Label="Chapter 2">
+			<Setting Id="50130" Label="Reach Windmill" State="false"/>
+			<Setting Id="50140" Label="Reach Church" State="false"/>
+			<Setting Id="50145" Label="Start Pesanta 2" State="false"/>
+			<Setting Id="50210" Label="Finish Chapter 2" State="false"/>
+		</Setting>
+		<Setting Id="Ch3s" Label="Chapter 3">
+			<Setting Id="MenStart" Label="Mendez Jumpscare" State="false"/>
+			<Setting Id="44200" Label="Escaped Mendez" State="false"/>
+			<Setting Id="50215" Label="Trigger Ambush" State="false"/>
+			<Setting Id="50220" Label="Escape Ambush" State="false"/>
+			<Setting Id="50240" Label="Start Gigante" State="false"/>
+			<Setting Id="50250" Label="Finish Chapter 3" State="false"/>
+		</Setting>
+		<Setting Id="Ch4s" Label="Chapter 4">
+			<Setting Id="50305" Label="Reached Luis' Lab" State="false"/>
+			<Setting Id="50315" Label="Get Shopping List" State="false"/>
+			<Setting Id="50320" Label="Ink Bottle" State="false"/>
+			<Setting Id="118907200" Label="Silver Bottle" State="false"/>
+			<Setting Id="118889600" Label="Gold Bottle" State="false"/>
+			<Setting Id="51101" Label="Enter Maze" State="false"/>
+			<Setting Id="118921600" Label="Blue Moonstone" State="false"/>
+			<Setting Id="50340" Label="Finish Chapter 4" State="false"/>
+		</Setting>
+		<Setting Id="Ch5s" Label="Chapter 5">
+			<Setting Id="55851" Label="Enter Nest" State="false"/>
+			<Setting Id="55854" Label="Enter Garrador Room" State="false"/>
+			<Setting Id="55855" Label="Elevator Before U3" State="false"/>
+			<Setting Id="50350" Label="U3 Start" State="false"/>
+			<Setting Id="50353" Label="Phase 2 Start" State="false"/>
+			<Setting Id="50355" Label="U3 Dead" State="false"/>
+			<Setting Id="50356" Label="RIP Luis" State="false"/>
+			<Setting Id="56850" Label="Enter Path of Penitence" State="false"/>
+			<Setting Id="50365" Label="Chase Krauser to Boat" State="false"/>
+			<Setting Id="50375" Label="Finish Chapter 5" State="false"/>
+		</Setting>
+		<Setting Id="Ch6s" Label="Chapter 6">
+			<Setting Id="Wreck" Label="Enter Wrecking Ball Area" State="false"/>
+			<Setting Id="50420" Label="Leon Saves Ashley" State="false"/>
+			<Setting Id="118923200" Label="Power Unit" State="false"/>
+			<Setting Id="60850" Label="Reach Freight Lift" State="false"/>
+			<Setting Id="60865" Label="Exit Freight Lift" State="false"/>
+			<Setting Id="50435" Label="Meet Martinico" State="false"/>
+			<Setting Id="50460" Label="Finish Chapter 6" State="false"/>
+		</Setting>
+		<Setting Id="Ch7s" Label="Chapter 7">
+			<Setting Id="69900" Label="Exit Cave" State="false"/>
+			<Setting Id="50510" Label="Saddler Start" State="false"/>
+			<Setting Id="50520" Label="Saddler End" State="false"/>
+			<Setting Id="118904000" Label="Red Rocket Launcher" State="false"/>
+			<Setting Id="50550" Label="Finish Chapter 7" State="false"/>
+		</Setting>
+	</Setting>
+</Settings>
