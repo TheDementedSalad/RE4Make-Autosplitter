@@ -1,6 +1,6 @@
 <Settings>
     <Setting Id="Main"  Label="Main Game" State="false">
-		<Setting Id="Ch1" Label="Custom Door Splitter - Only Splits Once On Area">
+		<Setting Id="Ch1" Label="Chapter 1">
 			<Setting Id="40510" Label="Reach Hunter's Cabin" State="false"/>
 			<Setting Id="10153" Label="Meet First Ganado" State="false"/>
 			<Setting Id="10154" Label="Dead Police Officer" State="false"/>
