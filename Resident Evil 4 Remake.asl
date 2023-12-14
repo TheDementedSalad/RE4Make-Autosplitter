@@ -9,6 +9,7 @@ state("re4","Release")
    long GameElapsedTime		: 0xD234048, 0x18, 0x38;		//share.GameClock
    long DemoSpendingTime	: 0xD234048, 0x18, 0x40;		//""
    long PauseSpendingTime	: 0xD234048, 0x18, 0x50;		//""
+   byte State				: 0xD268CA0, 0x30, 0x40;		//7 Pause Menu, 9 Photo Mode, 0 In Game
    long ChapterTimeStart	: 0xD20FF80, 0x20, 0x10, 0x18;  //chainsaw.GameStatsManager > OngoingStats
    
    int Cutscene				: 0xD21B2C8, 0x17C;				//10157 sacrifice cutscene, 10003 Leon in car, -1 no cutscene
@@ -22,6 +23,7 @@ state("re4","7/4/23")
    long GameElapsedTime		: 0xD22D7D0, 0x18, 0x38;		
    long DemoSpendingTime	: 0xD22D7D0, 0x18, 0x40;
    long PauseSpendingTime	: 0xD22D7D0, 0x18, 0x50;
+   byte State				: 0xD22D7F0, 0x30, 0x40;
    long ChapterTimeStart	: 0xD217780, 0x20, 0x10, 0x18;
 	
    int Cutscene				: 0xD222610, 0x17C;	
@@ -39,6 +41,7 @@ state("re4","24/4/23")
    long GameElapsedTime		: 0xD257048, 0x18, 0x38;
    long DemoSpendingTime	: 0xD257048, 0x18, 0x40;
    long PauseSpendingTime	: 0xD257048, 0x18, 0x50;
+   byte State				: 0xD2628B0, 0x30, 0x40;
    long ChapterTimeStart	: 0xD2470C8, 0x20, 0x10, 0x18;
 	
    int Cutscene				: 0xD257428, 0x17C;	
@@ -56,6 +59,7 @@ state("re4","21/9/23")
    long GameElapsedTime		: 0xDC078D8, 0x18, 0x38;
    long DemoSpendingTime	: 0xDC078D8, 0x18, 0x40;
    long PauseSpendingTime	: 0xDC078D8, 0x18, 0x50;
+   byte State				: 0xDBBB020, 0x30, 0x40;
    long ChapterTimeStart	: 0xDBBDA10, 0x20, 0x10, 0x18;
 	
    int Cutscene				: 0xDBC2C80, 0x18C;	
@@ -74,6 +78,7 @@ state("re4","2/10/23")
    long GameElapsedTime		: 0xDBBB360, 0x20, 0x18;
    long DemoSpendingTime	: 0xDBBB360, 0x20, 0x20;
    long PauseSpendingTime	: 0xDBBB360, 0x20, 0x30;
+   byte State				: 0xDBBB380, 0x30, 0x40;
    long ChapterTimeStart	: 0xDBB39D0, 0x20, 0x10, 0x18;
 	
    int Cutscene				: 0xDBB8C40, 0x18C;	
@@ -89,7 +94,11 @@ state("re4","2/10/23")
 
 init
 {
-	vars.StartTime = 0;
+	vars.StartTime = 0f;
+	vars.PauseStart = 0f;
+	vars.PauseHold = 0f;
+	vars.PauseTime = 0f;
+	vars.TotalTimeInSeconds = 0f;
 	vars.completedSplits = new List<int>();
 	vars.mendezKey = new List <int>();
 	
@@ -138,6 +147,23 @@ startup
     }
 }
 
+onStart
+{
+	vars.TotalTimeInSeconds = 0f;
+	vars.PauseStart = 0f;
+	vars.PauseHold = 0f;
+	vars.PauseTime = 0f;
+	
+	vars.Helper.Texts["Total Time"].Left = "Time Spent Paused:";
+	vars.Helper.Texts["Total Time"].Right = "00:00";
+}
+
+start
+{
+	return current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500 || current.Cutscene == -1 && old.Cutscene == 50000 && current.Map == 50502;
+}
+
+
 update
 {
 	//print(modules.First().ModuleMemorySize.ToString());
@@ -146,6 +172,7 @@ update
 	{
 		vars.completedSplits.Clear();
 		vars.mendezKey.Clear();
+		vars.Helper.Texts.RemoveAll();
 	}
 	
 	if(current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500 || current.Cutscene == 50000 && old.Cutscene == -1 && current.Map == 50502){
@@ -156,16 +183,34 @@ update
 	if(current.ItemID == 118920000 && !vars.mendezKey.Contains(118920000)){
 		vars.mendezKey.Add(current.ItemID);
 	}
+	
+	if((current.Chapter == 21100 || current.Chapter == 30100) && old.Chapter == -1){
+		vars.PauseHold = 0f;
+		vars.PauseTime = 0f;
+		vars.PauseStart = 0f;
+	}
+	
+	if(current.State == 7 && old.State != 7){
+		vars.PauseStart = current.PauseSpendingTime;
+		
+	}
+	
+	if(current.State != 7 && old.State == 7){
+		vars.PauseHold = vars.PauseHold + current.PauseSpendingTime - vars.PauseStart;
+	}
+	
+	if(current.State == 7 && timer.CurrentPhase == TimerPhase.Running){
+        vars.PauseTime = current.PauseSpendingTime - vars.PauseStart;
+
+        vars.TotalTimeInSeconds = vars.PauseHold + vars.PauseTime;
+        vars.Helper.Texts["Total Time"].Right = TimeSpan.FromSeconds((vars.TotalTimeInSeconds) / 1000000.0).ToString(@"mm\:ss");
+		
+    }
 }
 
 gameTime
 {
 	return TimeSpan.FromSeconds((current.GameElapsedTime - current.DemoSpendingTime - current.PauseSpendingTime - vars.StartTime) / 1000000.0);
-}
-
-start
-{
-	return current.Cutscene == 10003 && old.Cutscene == -1 && current.Map == 40500 || current.Cutscene == -1 && old.Cutscene == 50000 && current.Map == 50502;
 }
 
 split
@@ -225,11 +270,11 @@ isLoading
 reset
 {
 	return current.Cutscene == 10157 && old.Cutscene == -1 || current.Cutscene == 50000 && old.Cutscene == -1;
-	vars.StartTime = 0;
 }
 
 exit
 {
     //pauses timer if the game crashes
 	timer.IsGameTimePaused = true;
+	vars.Helper.Texts.RemoveAll();
 }
