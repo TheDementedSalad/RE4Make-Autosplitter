@@ -1,4 +1,4 @@
-//Resident Evil 4 Remake Autosplitter V1.0.5 (02/10/2023)
+//Resident Evil 4 Remake Autosplitter V2.0.0 (13 May 2024)
 //Supports IGT and Game Splits for both main game & Separate Ways
 //Script & Pointers by TheDementedSalad
 //Special Thanks to:
@@ -101,7 +101,7 @@ onStart
 
 start
 {
-	return current.Cutscene == 0 && old.Cutscene == 10003 && current.MapID == 40500 || current.Cutscene == 0 && old.Cutscene == 50000 && current.MapID == 50502;
+	return current.Cutscene == 0 && old.Cutscene == 10003 && current.MapID == 40500 || current.Cutscene == 0 && old.Cutscene == 50000 && current.MapID == 50502 || current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0;
 }
 
 
@@ -233,7 +233,7 @@ isLoading
 
 reset
 {
-	return current.Cutscene == 10157 && old.Cutscene == 0 || current.Cutscene == 50000 && old.Cutscene == 0;
+	return current.Cutscene == 10157 && old.Cutscene == 0 || current.Cutscene == 50000 && old.Cutscene == 0 || current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0;
 }
 
 exit
