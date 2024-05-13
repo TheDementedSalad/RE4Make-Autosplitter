@@ -64,7 +64,6 @@ init
 	vars.Helper["Chapter"] = vars.Helper.Make<int>(CampaignManager, 0x30);
 	vars.Helper["MapID"] = vars.Helper.Make<int>(CampaignManager, 0x38, 0x14);
 	vars.Helper["Menu"] = vars.Helper.Make<byte>(MenuState, 0x30, 0x40);
-	vars.Helper["ItemID"] = vars.Helper.Make<int>(Items, 0xE0, 0xF0);
 	vars.Helper["Cutscene"] = vars.Helper.Make<int>(EventTimelineMediator, 0x20, 0x10, 0x20);
 	
 	vars.StartTime = 0f;
