@@ -1,10 +1,12 @@
-//Resident Evil 4 Remake Autosplitter V2.0.0 (13/05/2024)
+//Resident Evil 4 Remake Autosplitter V1.0.5 (02/10/2023)
 //Supports IGT and Game Splits for both main game & Separate Ways
 //Script & Pointers by TheDementedSalad
 //Special Thanks to:
 //Yuushi & AvuKamu for going through the game and collecting data for splits
 
-state("re4"){}
+state("re4", "Pre SW"){}
+
+state("re4", "Post SW"){}
 
 startup
 {
@@ -31,7 +33,6 @@ startup
 
 init
 {
-	/*
 	switch (modules.First().ModuleMemorySize)
 	{
 		case (540995584):
@@ -44,7 +45,6 @@ init
 			version = "Post SW";
 			break;
 	}
-	*/
 	
 	IntPtr GameClock = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? e8 ?? ?? ?? ?? 48 89 43 ?? 48 c7 43");
 	IntPtr GameStatsManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 48 8b d9 48 8b 42");
@@ -62,7 +62,6 @@ init
 	vars.Helper["ChapterTimeStart"] = vars.Helper.Make<long>(GameStatsManager, 0x20, 0x10, 0x18);
 	vars.Helper["Difficulty"] = vars.Helper.Make<int>(CampaignManager, 0x28);
 	vars.Helper["Chapter"] = vars.Helper.Make<int>(CampaignManager, 0x30);
-	vars.Helper["EnvLoaderPhase"] = vars.Helper.Make<byte>(CampaignManager, 0xF8);
 	vars.Helper["MapID"] = vars.Helper.Make<int>(CampaignManager, 0x38, 0x14);
 	vars.Helper["Menu"] = vars.Helper.Make<byte>(MenuState, 0x30, 0x40);
 	vars.Helper["ItemID"] = vars.Helper.Make<int>(Items, 0xE0, 0xF0);
@@ -78,17 +77,13 @@ init
 	vars.Clock = GameClock;
 	vars.AP = GameRankSystem;
 	
-	/*
 	if (version == "Pre SW"){
-		vars.Helper["Cutscene"] = vars.Helper.Make<int>(SoundGame10Manager, 0x17C);
-		vars.Helper["gameState"] = vars.Helper.Make<int>(SoundGame10Manager, 0x184);
+		vars.Helper["EnvLoaderPhase"] = vars.Helper.Make<byte>(CampaignManager, 0xE8);
 	}
 	
 	else{
-		vars.Helper["Cutscene"] = vars.Helper.Make<int>(SoundGame10Manager, 0x18C);
-		vars.Helper["gameState"] = vars.Helper.Make<int>(SoundGame10Manager, 0x194);
+		vars.Helper["EnvLoaderPhase"] = vars.Helper.Make<byte>(CampaignManager, 0xE8);
 	}
-	*/
 }
 
 onStart
