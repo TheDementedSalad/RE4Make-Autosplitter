@@ -75,6 +75,7 @@ init
 	
 	vars.Clock = GameClock;
 	vars.AP = GameRankSystem;
+	vars.Stats = GameStatsManager;
 	
 	if (version == "Pre SW"){
 		vars.Helper["EnvLoaderPhase"] = vars.Helper.Make<byte>(CampaignManager, 0xE8);
