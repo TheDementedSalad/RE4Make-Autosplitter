@@ -151,7 +151,11 @@ update
 		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x20) + 0x20, 0);
 		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x20) + 0x28, 0);
 		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x20) + 0x30, 0);
-		game.WriteValue<long>(game.ReadPointer(game.ReadPointer(game.ReadPointer((IntPtr)vars.Stats) + 0x20) + 0x10) + 0x18, 0);
+		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x28) + 0x18, 0);
+		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x28) + 0x20, 0);
+		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x28) + 0x28, 0);
+		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x28) + 0x30, 0);
+		game.WriteValue<long>(game.ReadPointer(game.ReadPointer(game.ReadPointer((IntPtr)vars.Stats) + 0x20) + 0x10) 0x18, 0);
 	}
 	
 	if(settings["NoInt"]){
