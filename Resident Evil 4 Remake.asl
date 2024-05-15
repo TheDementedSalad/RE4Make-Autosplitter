@@ -120,10 +120,6 @@ update
 	}
 	*/
 	
-	if(current.ItemID == 118920000 && vars.mendezKey == false){
-		vars.mendezKey = true;
-	}
-	
 	if((current.Chapter == 21100 || current.Chapter == 30100) && old.Chapter == -1){
 		vars.PauseHold = 0f;
 		vars.PauseTime = 0f;
