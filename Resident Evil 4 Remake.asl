@@ -83,7 +83,7 @@ init
 	}
 	
 	else{
-		vars.Helper["EnvLoaderPhase"] = vars.Helper.Make<byte>(CampaignManager, 0xE8);
+		vars.Helper["EnvLoaderPhase"] = vars.Helper.Make<byte>(CampaignManager, 0xF8);
 		vars.Helper["ItemID"] = vars.Helper.Make<int>(Items, 0xE0, 0xF0);
 	}
 }
