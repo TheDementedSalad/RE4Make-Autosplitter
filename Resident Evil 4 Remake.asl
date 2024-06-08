@@ -103,7 +103,7 @@ onStart
 
 start
 {
-	return current.Cutscene == 0 && old.Cutscene == 10003 && current.MapID == 40500 || current.Cutscene == 0 && old.Cutscene == 50000 && current.MapID == 50502 || current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0;
+	return current.Cutscene == 0 && old.Cutscene == 10003 && current.MapID == 40500 || current.Cutscene == 0 && old.Cutscene == 50000 && current.MapID == 50502 || settings["NoInt"] && current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0;
 }
 
 
