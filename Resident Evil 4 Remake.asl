@@ -142,7 +142,7 @@ update
 		
     }
 	
-	if(current.Cutscene == 10003 && old.Cutscene == 0 && current.MapID == 40500 || current.Cutscene == 0 && old.Cutscene == 50000 && current.MapID == 50502 || current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0){
+	if(current.Cutscene == 10003 && old.Cutscene == 0 && current.MapID == 40500 || current.Cutscene == 0 && old.Cutscene == 50000 && current.MapID == 50502 || settings["NoInt"] && current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0){
 		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x20) + 0x18, 0);
 		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x20) + 0x20, 0);
 		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x20) + 0x28, 0);
