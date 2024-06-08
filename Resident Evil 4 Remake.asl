@@ -232,7 +232,7 @@ isLoading
 
 reset
 {
-	return current.Cutscene == 10157 && old.Cutscene == 0 || current.Cutscene == 50000 && old.Cutscene == 0 || current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0;
+	return current.Cutscene == 10157 && old.Cutscene == 0 || current.Cutscene == 50000 && old.Cutscene == 0 || settings["NoInt"] && current.MapID == 43300 && current.EnvLoaderPhase == 1 && old.EnvLoaderPhase == 0;
 }
 
 exit
